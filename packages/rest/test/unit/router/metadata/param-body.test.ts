@@ -25,5 +25,27 @@ describe('Routing metadata for parameters', () => {
         },
       ]);
     });
+    it('accepts a type definition', () => {
+      class Model {
+        foo: number;
+      }
+
+      class MyController {
+        @post('/greeting')
+        @param.body('name', Model)
+        greet(name: string) {}
+      }
+
+      const actualSpec = getControllerSpec(MyController);
+      expect(actualSpec.paths['/greeting']['post'].parameters).to.eql([
+        {
+          name: 'name',
+          in: 'body',
+          schema: {
+            $ref: '#/definitions/Model',
+          },
+        },
+      ]);
+    });
   });
 });

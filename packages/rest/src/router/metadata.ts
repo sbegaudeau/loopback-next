@@ -294,6 +294,13 @@ export function param(paramSpec: ParameterObject) {
     descriptorOrIndex: TypedPropertyDescriptor<any> | number,
   ) {
     const targetWithParamStyle = target as any;
+    // if a class is passed in instead of a schema
+    if (typeof paramSpec.schema === 'function') {
+      const schema = paramSpec.schema as Function;
+      paramSpec.schema = {
+        $ref: `#/definitions/${schema.name}`,
+      };
+    }
     if (typeof descriptorOrIndex === 'number') {
       if (targetWithParamStyle[paramDecoratorStyle] === 'method') {
         // This should not happen as parameter decorators are applied before
@@ -468,7 +475,7 @@ export namespace param {
    * @param name Parameter name
    * @param schema The schema defining the type used for the body parameter.
    */
-  export const body = function(name: string, schema: SchemaObject) {
+  export const body = function(name: string, schema: SchemaObject | Function) {
     return param({name, in: 'body', schema});
   };
 }
