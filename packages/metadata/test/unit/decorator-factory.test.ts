@@ -270,7 +270,7 @@ describe('PropertyDecoratorFactory', () => {
         myProp: string;
       }
     }).to.throw(
-      /Decorator cannot be applied more than once on property MyController\.prototype\.myProp/,
+      /Decorator cannot be applied more than once on MyController\.prototype\.myProp/,
     );
   });
 });
@@ -318,7 +318,7 @@ describe('PropertyDecoratorFactory for static properties', () => {
         static myProp: string;
       }
     }).to.throw(
-      /Decorator cannot be applied more than once on property MyController\.myProp/,
+      /Decorator cannot be applied more than once on MyController\.myProp/,
     );
   });
 });
@@ -366,7 +366,7 @@ describe('MethodDecoratorFactory', () => {
         myMethod() {}
       }
     }).to.throw(
-      /Decorator cannot be applied more than once on method MyController\.prototype\.myMethod/,
+      /Decorator cannot be applied more than once on MyController\.prototype\.myMethod\(\)/,
     );
   });
 });
@@ -414,7 +414,7 @@ describe('MethodDecoratorFactory for static methods', () => {
         static myMethod() {}
       }
     }).to.throw(
-      /Decorator cannot be applied more than once on method MyController\.myMethod/,
+      /Decorator cannot be applied more than once on MyController\.myMethod\(\)/,
     );
   });
 });
@@ -471,7 +471,7 @@ describe('ParameterDecoratorFactory', () => {
         ) {}
       }
     }).to.throw(
-      /Decorator cannot be applied more than once on parameter MyController\.prototype\.myMethod\[0\]/,
+      /Decorator cannot be applied more than once on MyController\.prototype\.myMethod\[0\]/,
     );
   });
 });
@@ -572,7 +572,7 @@ describe('ParameterDecoratorFactory for a static method', () => {
         ) {}
       }
     }).to.throw(
-      /Decorator cannot be applied more than once on parameter MyController\.myMethod\[0\]/,
+      /Decorator cannot be applied more than once on MyController\.myMethod\[0\]/,
     );
   });
 });
