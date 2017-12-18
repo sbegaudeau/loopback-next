@@ -25,7 +25,7 @@ describe('Routing metadata for parameters', () => {
         },
       ]);
     });
-    it('accepts a type definition', () => {
+    it('accepts a class constructor', () => {
       class Model {
         foo: number;
       }
